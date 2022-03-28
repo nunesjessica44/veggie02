@@ -27,6 +27,97 @@
         <a href="#" class="btn btn-sm"> <i class="fa fa-shopping-cart"></i></a>
     </nav>
 
+    <div class="contaiber">
+        <div class="row">
+            <div class="col-3 mb-3">
+                <div class="card">
+                    <img src="{{ asset('images/produto1-cacal.jpg') }}" alt="teste3" class="card-imag-top">
+                    <h6 class="card-title"> Cacal </h6>
+                    <a href="#" class="btn btn-secondary">Adicionar Item</a>
+                </div>
+            </div>
+
+            <div class="col-3 mb-3">
+                <div class="card">
+                    <img src="{{ asset('images/produto2-sucoMaca.jpg') }}" alt="teste3" class="card-imag-top">
+                    <h6 class="card-title"> Suco de Maça </h6>
+                    <a href="#" class="btn btn-secondary">Adicionar Item</a>
+                </div>
+            </div>
+
+            <div class="col-3 mb-3">
+                <div class="card">
+                    <img src="{{ asset('images/produto3-acucarCoco.jpg') }}" alt="teste3" class="card-imag-top">
+                    <h6 class="card-title"> Açucar de Coco </h6>
+                    <a href="#" class="btn btn-secondary">Adicionar Item</a>
+                </div>
+            </div>
+
+            <div class="col-3 mb-3">
+                <div class="card">
+                    <img src="{{ asset('images/produto4-farinhaCoco.jpg') }}" alt="teste3" class="card-imag-top">
+                    <h6 class="card-title"> Farinha de Coco </h6>
+                    <a href="#" class="btn btn-secondary">Adicionar Item</a>
+                </div>
+            </div>
+
+            <div class="col-3 mb-3">
+                <div class="card">
+                    <img src="{{ asset('images/produto5-farinhaAmendoa.jpg') }}" alt="teste3" class="card-imag-top">
+                    <h6 class="card-title"> Farinha de Amêndoa </h6>
+                    <a href="#" class="btn btn-secondary">Adicionar Item</a>
+                </div>
+            </div>
+
+            <div class="col-3 mb-3">
+                <div class="card">
+                    <img src="{{ asset('images/produto6-azeitona.jpg') }}" alt="teste3" class="card-imag-top">
+                    <h6 class="card-title"> Cacal </h6>
+                    <a href="#" class="btn btn-secondary">Azeitona</a>
+                </div>
+            </div>
+
+            <div class="col-3 mb-3">
+                <div class="card">
+                    <img src="{{ asset('images/produto7-azeiteOliva.jpg') }}" alt="teste3" class="card-imag-top">
+                    <h6 class="card-title"> Azeite de Oliva </h6>
+                    <a href="#" class="btn btn-secondary">Adicionar Item</a>
+                </div>
+            </div>
+
+            <div class="col-3 mb-3">
+                <div class="card">
+                    <img src="{{ asset('images/produto8-nozes.jpg') }}" alt="teste3" class="card-imag-top">
+                    <h6 class="card-title"> Nozes </h6>
+                    <a href="#" class="btn btn-secondary">Adicionar Item</a>
+                </div>
+            </div>
+
+            <div class="col-3 mb-3">
+                <div class="card">
+                    <img src="{{ asset('images/produto9-proteinaSoja.jpg') }}" alt="teste3" class="card-imag-top">
+                    <h6 class="card-title"> Proteina de Soja </h6>
+                    <a href="#" class="btn btn-secondary">Adicionar Item</a>
+                </div>
+            </div>
+
+            <div class="col-3 mb-3">
+                <div class="card">
+                    <img src="{{ asset('images/produto10-proteinaSoja2.jfif') }}" alt="teste3" class="card-imag-top">
+                    <h6 class="card-title"> Proteina de Soja </h6>
+                    <a href="#" class="btn btn-secondary">Adicionar Item</a>
+                </div>
+            </div>
+
+            <div class="col-3 mb-3">
+                <div class="card">
+                    <img src="{{ asset('images/produto11-sucoUva.jpg') }}" alt="teste3" class="card-imag-top">
+                    <h6 class="card-title"> Suco de Uva </h6>
+                    <a href="#" class="btn btn-secondary">Adicionar Item</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 
@@ -34,7 +125,8 @@
 
 
 
-    
+
+
     <!-- SCRIPTS -->
     <!-- font awesome-->
     <script src="https://kit.fontawesome.com/ab085ed52e.js" crossorigin="anonymous"></script>
