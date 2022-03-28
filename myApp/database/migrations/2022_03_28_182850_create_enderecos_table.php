@@ -14,8 +14,24 @@ return new class extends Migration
     public function up()
     {
         Schema::create('enderecos', function (Blueprint $table) {
-            $table->id();
+            $table->increments("id");
+
+            $table->string("logradouro");
+            $table->string("numero");
+            $table->string("cidade");
+            $table->string("estado");
+            $table->string("cep");
+            $table->string("complemento");
+
+            
+            $table->integer('usuario_id')->unsigned();
+            
+            $table->foreign('usuario_id')
+            ->references('id')
+            ->on('usuarios')->onDelete("cascade");
+            
             $table->timestamps();
+
         });
     }
 

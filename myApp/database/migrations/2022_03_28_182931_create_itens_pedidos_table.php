@@ -14,7 +14,24 @@ return new class extends Migration
     public function up()
     {
         Schema::create('itens_pedidos', function (Blueprint $table) {
-            $table->id();
+            $table->increments("id");
+
+            $table->integer("quantidade");
+            $table->decimal("valor", 10,2);
+            $table->datetime("dt_item");
+
+            $table->integer('pedido_id')->unsigned();
+
+            $table->foreign('pedido_id')
+            ->references('id')
+            ->on('pedidos')->onDelete("cascade");
+
+            $table->integer('produto_id')->unsigned();
+
+            $table->foreign('produto_id')
+            ->references('id')
+            ->on('produtos')->onDelete("cascade");
+            
             $table->timestamps();
         });
     }
