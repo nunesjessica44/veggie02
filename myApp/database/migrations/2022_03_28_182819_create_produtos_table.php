@@ -14,8 +14,21 @@ return new class extends Migration
     public function up()
     {
         Schema::create('produtos', function (Blueprint $table) {
-            $table->id();
+            $table->increments("id");
+
+            $table->string("nome", 100);
+            $table->decimal("valor", 10,2);
+            $table->string("foto", 100)->nullable();
+            $table->string("descricao", 255)->nullable();
+
+            $table->integer('categoria_id')->unsigned();
+            
+            $table->foreign('categoria_id')
+            ->references('id')
+            ->on('categorias')->onDelete("cascade");
+            
             $table->timestamps();
+
         });
     }
 
