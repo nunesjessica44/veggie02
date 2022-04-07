@@ -19,9 +19,9 @@
         <a href="#" class="navbar-brand">veggie02</a>
         <div class="collapse navbar-collapse">
             <div class="navbar-nav">
-                <a class="nav-link" href="#">HOME</a>
-                <a class="nav-link" href="#">Categorias</a>
-                <a class="nav-link" href="#">Cadastrar</a>
+                <a class="nav-link" href="{{ route('home') }}">HOME</a>
+                <a class="nav-link" href="{{ route('categoria') }}">Categorias</a>
+                <a class="nav-link" href="{{ route('cadastrar') }}">Cadastrar</a>
             </div>
         </div>
         <a href="#" class="btn btn-sm"> <i class="fa fa-shopping-cart"></i></a>
