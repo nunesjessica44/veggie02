@@ -11,7 +11,7 @@ class RModel extends Model
 
 
     protected $primarykey = "id";
-    public $timespatams = true; //created_at updated_at
+    public $timestamps = true; //created_at updated_at
     public $incremeting = true;
     protected $fillable = [];
 
