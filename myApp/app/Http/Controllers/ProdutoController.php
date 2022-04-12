@@ -8,6 +8,10 @@ class ProdutoController extends Controller
 {
     Public function index(Request $request){
         $data = [];
+
+        //buscar todos os produtos
+        $listaProdutos = \App\Models\Produto::all();
+        $data["lista"] = $listaProdutos;
         
         return view("home",$data);
 

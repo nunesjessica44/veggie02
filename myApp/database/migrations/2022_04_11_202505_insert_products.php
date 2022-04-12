@@ -33,7 +33,7 @@ return new class extends Migration
         $prod5 = new \App\Models\Produto(['nome' => 'Farinha de Amêndoa', 'valor' => 10, 'foto' => 'images/produto5-farinhaAmendoa.jpg', 'descricao' =>'', 'categoria_id' => $cat->id]);
         $prod5->save();
 
-        $prod6 = new \App\Models\Produto(['nome' => 'Cacal', 'valor' => 10, 'foto' => 'images/produto6-azeitona.jpg', 'descricao' =>'', 'categoria_id' => $cat->id]);
+        $prod6 = new \App\Models\Produto(['nome' => 'Azeitona', 'valor' => 10, 'foto' => 'images/produto6-azeitona.jpg', 'descricao' =>'', 'categoria_id' => $cat->id]);
         $prod6->save();
 
         $prod7 = new \App\Models\Produto(['nome' => 'Azeite de Oliva', 'valor' => 10, 'foto' => 'images/produto7-azeiteOliva.jpg', 'descricao' =>'', 'categoria_id' => $cat->id]);
