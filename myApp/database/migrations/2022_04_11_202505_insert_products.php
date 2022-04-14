@@ -48,7 +48,7 @@ return new class extends Migration
         $prod10 = new \App\Models\Produto(['nome' => 'Proteina de Soja', 'valor' => 10, 'foto' => 'images/produto10-proteinaSoja2.jfif', 'descricao' =>'', 'categoria_id' => $cat->id]);
         $prod->save();
 
-        $prod10 = new \App\Models\Produto(['nome' => 'Suco de Uva', 'valor' => 10, 'foto' => 'images/produto11-sucoUva.jpg', 'descricao' =>'', 'categoria_id' => $cat->id]);
+        $prod11 = new \App\Models\Produto(['nome' => 'Suco de Uva', 'valor' => 10, 'foto' => 'images/produto11-sucoUva.jpg', 'descricao' =>'', 'categoria_id' => $cat->id]);
         $prod->save();
         
     }
