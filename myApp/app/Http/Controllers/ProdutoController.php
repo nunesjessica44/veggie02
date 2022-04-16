@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Categorias;
+use App\Models\Categoria;
 use App\Models\Produto;
 
 class ProdutoController extends Controller
@@ -18,18 +18,24 @@ class ProdutoController extends Controller
         return view("home",$data);
 
     }
-    Public function categoria(Request $request){
+    Public function categoria($idcategoria = 0, Request $request){
         $data = [];
         
         //SELECT * FROM categorias
         $listaCategorias = Categoria::all(); 
 
         //SELECT * FROM produtos limit 4
-        $listaProdutos = Produtos::limit(4)->get();
+        $queryProduto = Produto::limit(4);
 
+        if($idcategoria != 0){
+            //WHERE categoria_id = $idcategoria
+            $queryProduto->where("categoria_id", $idcategoria);
+        }
 
-        $data["lista"] = listaProdutos;
-        $data["listaCategoria"] = listaCategorias;
+        $listaProdutos = $queryProduto->get();
+
+        $data["lista"] = $listaProdutos;
+        $data["listaCategoria"] = $listaCategorias;
         return view("categoria",$data);
         
     }
