@@ -1,6 +1,6 @@
 @extends('layout')
 @section('conteudo')
-    <h2>categoria </h2>
+    <div class="col-2">
 
     @if(isset($listaCategoria) && count($listaCategoria) > 0)
     <ul>
@@ -10,6 +10,8 @@
         @endforeach
     </ul>
     @endif
-
+</div>
+<div class="col-10">
     @include('_produtos', ['lista' => $lista])   
+</div>
 @endsection
