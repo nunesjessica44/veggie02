@@ -39,6 +39,7 @@ class ProdutoController extends Controller
 
         $data["lista"] = $listaProdutos;
         $data["listaCategoria"] = $listaCategorias;
+        $data["idcategoria"] = $idcategoria;
         return view("categoria",$data);
         
     }
