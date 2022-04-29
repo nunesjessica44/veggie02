@@ -58,7 +58,7 @@ class ProdutoController extends Controller
          }
           return redirect()->route('home');
         } 
-        public function verCarinhp(Request $request){
+        public function verCarrinho(Request $request){
             $carrinho = session('cart', []);
             dd($carrinho);
             }
