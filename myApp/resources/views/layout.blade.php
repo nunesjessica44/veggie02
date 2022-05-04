@@ -28,7 +28,7 @@
     </nav>
 
     <div class="contaiber">
-        <div class="row">
+        <div class="row" style="margin:5%">
             <!-- Será adicionado conteúdo das outras telas -->
             @yield('conteudo')
         </div>
