@@ -5,7 +5,8 @@
         <h2>Cadastrar Cliente</h2>
     </div>
 
-    <form action="" method="POST">
+    <form action="{{route('cadastrar_cliente') }}" method="POST">
+        @csrf
         <div class="row">
             <div class="col-6">
                 <div class="form-group">
@@ -27,9 +28,19 @@
                     Senha: <input type="password" name="password" class="form-control">
                 </div>
             </div>
-            <div class="col-12">
+            <div class="col-8">
                 <div class="form-group">
                     Endereço: <input type="text" name="endereco" class="form-control">
+                </div>  
+            </div>
+            <div class="col-1">
+                <div class="form-group">
+                    Número: <input type="text" name="numero" class="form-control">
+                </div>  
+            </div>
+            <div class="col-8">
+                <div class="form-group">
+                    Complemento: <input type="text" name="complemento" class="form-control">
                 </div>  
             </div>
             <div class="col-4">
