@@ -25,7 +25,7 @@ class ClienteController extends Controller
          //dd($values);
          $endereco = new Endereco($values);
          $endereco->logradouro = $request->input("endereco", "");
-         dd($endereco);
+         //dd($endereco);
         
          return redirect()->route("cadastrar");
         
