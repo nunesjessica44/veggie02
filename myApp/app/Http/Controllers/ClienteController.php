@@ -20,12 +20,23 @@ class ClienteController extends Controller
         $values = $request->all();
         $usuario = new Usuario();
         $usuario->fill($values);
+        $usuario->login = $request->input("cpf", "");
          //$nome = $request->input("nome", "");
          //dd($nome);
          //dd($values);
          $endereco = new Endereco($values);
          $endereco->logradouro = $request->input("endereco", "");
          //dd($endereco);
+
+         try{
+
+            $usuario->save(); //Salva o usuario
+            $endereco->usuario_id = $usuario->id; //Relacionamento das tabelas
+            $endereco->save(); //Salvar o endereco
+
+         }catch(\Exception $e){
+
+         }
         
          return redirect()->route("cadastrar");
         
