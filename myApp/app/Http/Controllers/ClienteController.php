@@ -21,6 +21,9 @@ class ClienteController extends Controller
         $usuario = new Usuario();
         $usuario->fill($values);
         $usuario->login = $request->input("cpf", "");
+
+        $senha= $request->input("password", "");
+        $usuario->password = \Hash::make($senha); //criptografar senha
          //$nome = $request->input("nome", "");
          //dd($nome);
          //dd($values);
@@ -29,16 +32,18 @@ class ClienteController extends Controller
          //dd($endereco);
 
          try{
-
+            \DB::beginTransaction(); //inicia a transação
             $usuario->save(); //Salva o usuario
             $endereco->usuario_id = $usuario->id; //Relacionamento das tabelas
             $endereco->save(); //Salvar o endereco
-
+            \DB::commit(); //confirma a transação
          }catch(\Exception $e){
-
+            //tratar o erro
+            \DB::rollback(); //retira alterações por ocorrer erro durante o processo
+ 
          }
         
-         return redirect()->route("cadastrar");
+        return redirect()->route("cadastrar");
         
     }
 }
