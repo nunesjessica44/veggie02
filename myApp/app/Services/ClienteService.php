@@ -6,13 +6,14 @@ use App\Models\Usuario;
 use App\Models\Endereco;
 use log;
 
-class ClienteService extends Controller{
+class ClienteService {
 
     public function SalvarUsuario(Usuario $user, Endereco $endereco){
         try{
             //Buscando um usurio com login que deve ser salvo
             $dbUsuario = Usuario:: where("login", $user->login)->first();
             if($dbUsuario){
+                
                 return ['status' => 'err', 'message' =>'Login ja cadastrado no seu sistema'];
             }
             \DB::beginTransaction(); //inicia a transação
