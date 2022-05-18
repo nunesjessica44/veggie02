@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Usuario;
 use App\Models\Endereco;
+use app\Services\ClienteService;
 
 class ClienteController extends Controller
 {
@@ -30,19 +31,16 @@ class ClienteController extends Controller
          $endereco = new Endereco($values);
          $endereco->logradouro = $request->input("endereco", "");
          //dd($endereco);
+  
+         $clienteService = new ClienteServer();
+        $result = $clienteService->salvarUsuario($usuario, $endereco);
 
-         try{
-            \DB::beginTransaction(); //inicia a transação
-            $usuario->save(); //Salva o usuario
-            $endereco->usuario_id = $usuario->id; //Relacionamento das tabelas
-            $endereco->save(); //Salvar o endereco
-            \DB::commit(); //confirma a transação
-         }catch(\Exception $e){
-            //tratar o erro
-            \DB::rollback(); //retira alterações por ocorrer erro durante o processo
- 
-         }
+        $message = $result["message"];
+        $status = $result["status"];
         
+        //ok, Cadastro com sucesso
+        //err, Usuario nao pode ser cadastrado 
+        $request->session()->flash($status, $message);
         return redirect()->route("cadastrar");
         
     }

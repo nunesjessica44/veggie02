@@ -30,6 +30,14 @@
 
     <div class="contaiber">
         <div class="row" style="margin:5%">
+            @if($message = Session::get("err"))
+            <div class="col-12">
+                <div class="alert alert-danger">{{$message}}</div>
+            </div>
+            @if($message = Session::get("ok"))
+            <div class="col-12">
+                <div class="alert alert-success">{{$message}}</div>
+            </div>
             <!-- Será adicionado conteúdo das outras telas -->
             @yield('conteudo')
         </div>
