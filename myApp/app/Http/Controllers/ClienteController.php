@@ -32,7 +32,7 @@ class ClienteController extends Controller
          $endereco->logradouro = $request->input("endereco", "");
          //dd($endereco);
   
-         $clienteService = new ClienteServer();
+         $clienteService = new ClienteService();
         $result = $clienteService->salvarUsuario($usuario, $endereco);
 
         $message = $result["message"];

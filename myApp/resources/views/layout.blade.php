@@ -34,10 +34,12 @@
             <div class="col-12">
                 <div class="alert alert-danger">{{$message}}</div>
             </div>
+            @endif
             @if($message = Session::get("ok"))
             <div class="col-12">
                 <div class="alert alert-success">{{$message}}</div>
             </div>
+            @endif
             <!-- Será adicionado conteúdo das outras telas -->
             @yield('conteudo')
         </div>
