@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Usuario;
 use App\Models\Endereco;
-use app\Services\ClienteService;
+use App\Services\ClienteService;
 
 class ClienteController extends Controller
 {
@@ -34,6 +34,8 @@ class ClienteController extends Controller
   
          $clienteService = new ClienteService();
         $result = $clienteService->salvarUsuario($usuario, $endereco);
+        
+        //dd($result);        
 
         $message = $result["message"];
         $status = $result["status"];

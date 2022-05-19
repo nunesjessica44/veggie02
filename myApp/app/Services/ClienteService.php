@@ -4,7 +4,7 @@ namespace App\Services;
 
 use App\Models\Usuario;
 use App\Models\Endereco;
-use log;
+use Log;
 
 class ClienteService {
 
@@ -14,11 +14,11 @@ class ClienteService {
             $dbUsuario = Usuario:: where("login", $user->login)->first();
             if($dbUsuario){
                 
-                return ['status' => 'err', 'message' =>'Login ja cadastrado no seu sistema'];
+            return ['status' => 'err', 'message' =>'Login ja cadastrado no seu sistema'];
             }
             \DB::beginTransaction(); //inicia a transação
-            $usuario->save(); //Salva o usuario
-            $endereco->usuario_id = $usuario->id; //Relacionamento das tabelas
+            $user->save(); //Salva o usuario
+            $endereco->usuario_id = $user->id; //Relacionamento das tabelas
             $endereco->save(); //Salvar o endereco
             \DB::commit(); //confirma a transação
 

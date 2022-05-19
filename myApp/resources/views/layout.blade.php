@@ -28,13 +28,14 @@
         <a href="{{ route('ver_carrinho') }}" class="btn btn-sm"> <i class="fa fa-shopping-cart"></i></a>
     </nav>
 
-    <div class="contaiber">
+    <div class="container">
         <div class="row" style="margin:5%">
             @if($message = Session::get("err"))
             <div class="col-12">
-                <div class="alert alert-danger">{{$message}}</div>
+                <div class="alert alert-danger">{{ $message }}</div>
             </div>
             @endif
+
             @if($message = Session::get("ok"))
             <div class="col-12">
                 <div class="alert alert-success">{{$message}}</div>
