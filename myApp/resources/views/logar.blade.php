@@ -12,7 +12,7 @@
               </div>
               <div class="form-group">
                    Senha
-                   <input type="password" name="logar" class="form-control" />
+                   <input type="password" name="senha" class="form-control" />
               </div>
               <input type="submit" value="Logar" class="btn btn-lg btn-primary">
 
