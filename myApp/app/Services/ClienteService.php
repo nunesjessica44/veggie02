@@ -14,7 +14,7 @@ class ClienteService {
             $dbUsuario = Usuario:: where("login", $user->login)->first();
             if($dbUsuario){
                 
-            return ['status' => 'err', 'message' =>'Login ja cadastrado no seu sistema'];
+            return ['status' => 'err', 'message' =>'Login já cadastrado no seu sistema'];
             }
             \DB::beginTransaction(); //inicia a transação
             $user->save(); //Salva o usuario
