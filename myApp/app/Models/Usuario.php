@@ -10,7 +10,7 @@ class Usuario extends RModel implements Authenticatable
 
     public function getAuthIdentifierName()
     {
-        return $this->getKey();
+        return 'login';
     }
     public function getAuthIdentifier()
     {
@@ -32,13 +32,11 @@ class Usuario extends RModel implements Authenticatable
     {
       
     }
-    public function setLoginAttribute($login)
+    public function setLoginAttribute($login) {
         /*
         Substitiu os traços por vazio, para recuperar no login
         */
         $value = preg_replace("/[^0-9]/", "", $login);
         $this->attributes["login"] = $value; 
-    {
-
     }
 }

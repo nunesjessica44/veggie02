@@ -37,11 +37,22 @@
     <div class="container">
         <div class="row" style="margin:5%">
             <!-- Será adicionado conteúdo das outras telas -->
+            @if($message = Session::get("err"))
+            <div class="col-12">
+                <div class="alert alert-danger">{{ $message }}</div>
+            </div>
+            @endif
 
             @if(\Auth::user())
                 <div class="col-12">
-                <p> class="text-right">Seja bem vindo, {{ \Auth::user()->nome}}, <a href="{{ route('sair') }}">sair</a> </p>
+                <p class="text-right">Seja bem vindo(a), {{ \Auth::user()->nome}}, <a href="{{ route('sair') }}">sair</a> </p>
                 </div>
+            @endif
+
+            @if($message = Session::get("ok"))
+            <div class="col-12">
+                <div class="alert alert-success">{{$message}}</div>
+            </div>
             @endif
 
             @yield('conteudo')

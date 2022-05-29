@@ -50,7 +50,7 @@
                     Endereço: <input type="text" name="endereco" class="form-control">
                 </div>  
             </div>
-            <div class="col-1">
+            <div class="col-4">
                 <div class="form-group">
                     Número: <input type="text" name="numero" class="form-control">
                 </div>  

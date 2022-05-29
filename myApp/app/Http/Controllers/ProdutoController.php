@@ -18,7 +18,7 @@ class ProdutoController extends Controller
         return view("home",$data);
 
     }
-    Public function categoria($idcategoria = 0, Request $request){
+    Public function categoriaId($idcategoria, Request $request){
         $data = [];
         
         //SELECT * FROM categorias
@@ -43,6 +43,28 @@ class ProdutoController extends Controller
         return view("categoria",$data);
         
     }
+
+    Public function categoria(Request $request){
+        $idcategoria = 0;
+        $data = [];
+        
+        //SELECT * FROM categorias
+        $listaCategorias = Categoria::all(); 
+
+
+        //SELECT * FROM produtos
+        $queryProduto = Produto::query()->select();
+
+        $listaProdutos = $queryProduto->get();
+
+        $data["lista"] = $listaProdutos;
+        $data["listaCategoria"] = $listaCategorias;
+        $data["idcategoria"] = $idcategoria;
+        return view("categoria",$data);
+        
+    }
+
+
     public function adicionarCarrinho($idProduto = 0, Request $request){
         //Buscar o produto pelo ID
           $prod = Produto::find($idProduto);
