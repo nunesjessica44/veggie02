@@ -23,14 +23,26 @@
                 <a class="nav-link" href="{{ route('home') }}">HOME</a>
                 <a class="nav-link" href="{{ route('categoria') }}">Categorias</a>
                 <a class="nav-link" href="{{ route('cadastrar') }}">Cadastrar</a>
+                @if(!\Auth::user())
+
+                @else
+                <a class="nav-link" href="{{ route('sair') }}">Logout</a>
+                @endif
             </div>
         </div>
         <a href="{{ route('ver_carrinho') }}" class="btn btn-sm"> <i class="fa fa-shopping-cart"></i></a>
     </nav>
 
-    <div class="contaiber">
+    <div class="container">
         <div class="row" style="margin:5%">
             <!-- Será adicionado conteúdo das outras telas -->
+
+            @if(\Auth::user())
+                <div class="col-12">
+                <p> class="text-right">Seja bem vindo, {{ \Auth::user()->nome}}, <a href="{{ route('sair') }}">sair</a> </p>
+                </div>
+            @endif
+
             @yield('conteudo')
         </div>
     </div>
