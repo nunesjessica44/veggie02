@@ -30,7 +30,15 @@ class Usuario extends RModel implements Authenticatable
     }
     public function getRememberTokenName()
     {
-        
+      
     }
+    public function setLoginAttribute($login)
+        /*
+        Substitiu os traços por vazio, para recuperar no login
+        */
+        $value = preg_replace("/[^0-9]/", "", $login);
+        $this->attributes["login"] = $value; 
+    {
 
+    }
 }
