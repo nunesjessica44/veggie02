@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\UsuarioController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,6 +30,10 @@ Route::match(['get','post'],'/cliente/cadastrar', [ClienteController::class,'cad
 
 Route::get('/sair', [UsarioController::class,'sair'])
         ->name('sair');       
+        
+Route::match(['get','post'],'/logar', [UsuarioController::class,'logar'])
+        ->name('logar');
+
 
 Route::match(['get','post'],'/{idproduto}/carrinho/adicionar', [ProdutoController::class,'adicionarCarrinho'])
         ->name('adicionar_carrinho');
