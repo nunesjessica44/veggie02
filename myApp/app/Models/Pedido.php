@@ -5,7 +5,7 @@ namespace App\Models;
 class Pedido extends RModel
 {
     protected $table = "pedidos";
-    protected $data = ["datapedido"];
+    protected $data = ["dt_pedido"];
     protected $fillable = ['dt_pedido','status','usuario_id'];
 
     public function statusDesc(){

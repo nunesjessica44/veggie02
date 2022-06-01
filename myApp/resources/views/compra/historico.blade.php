@@ -1,5 +1,5 @@
-@extends("layout");
-@section("conteudo")
+@extends('layout')
+@section('conteudo')
 
 <div class ="col-12">
     <h2>Minhas Compras</h2>
@@ -12,12 +12,19 @@
             <th>Situação</th>
             <th></th>
     </tr>
+
     @foreach($lista as $ped)
     <tr>
-        <td>{{ $ped->datapedido->format("d/m/Y H:i") }}</td>
+
+    <?php
+    $pedData = DateTime::createFromFormat('Y-m-d H:i:s', $ped->dt_pedido);
+    ?>
+        <td>{{ $pedData->format('d/m/Y H:i:s') }}</td>
         <td>{{ $ped->statusDesc() }}</td>
         <td></td>
     </tr>
 @endforeach
     </table>
 </div>
+
+@endsection

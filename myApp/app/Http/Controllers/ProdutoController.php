@@ -117,8 +117,8 @@ class ProdutoController extends Controller
                 $idusuario = \Auth::user()->id;
 
                 $listaPedido = Pedido::where("usuario_id", $idusuario)
-                                    ->orderby("datapedido", "desc")
-                                    ->get();
+                                    ->orderby("dt_pedido", "desc")
+                                    ->get();      
 $data["lista"] = $listaPedido;
 
             return view("compra/historico",$data);
