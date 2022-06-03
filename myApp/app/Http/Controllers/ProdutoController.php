@@ -7,6 +7,7 @@ use App\Models\Categoria;
 use App\Models\Produto;
 use App\Services\VendaService;
 use App\Models\Pedido;
+use App\Models\ItensPedido;
 
 class ProdutoController extends Controller
 {
@@ -122,5 +123,16 @@ class ProdutoController extends Controller
 $data["lista"] = $listaPedido;
 
             return view("compra/historico",$data);
+        }
+        public function detalhes(Request $request){
+            $idpedido = $request->input("idpedido");
+            
+            $listaItens = itensPedido::join("produtos", "produto.id", "=", "itens_pedidos.produto_id")
+                    ->where("pedido_id", $idpedido)
+                    ->get(['itens_pedidos.*', 'itens_prdidos.valor as valoritem', 'produtos.*']);
+
+            $data = [];
+            $data["listaItens"] = $listaItens;
+            return view("compras/detalhes", $data);
         }
 }
