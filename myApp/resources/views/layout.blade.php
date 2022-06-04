@@ -29,6 +29,8 @@
                 <a class="nav-link" href="{{ route('compra_historico') }}">Minhas Compras</a>
                 <a class="nav-link" href="{{ route('sair') }}">Logout</a>
                 @endif
+
+                <a class="nav-link" href="{{ route('dashboard') }}">dashboard</a>
                 
             </div>
         </div>

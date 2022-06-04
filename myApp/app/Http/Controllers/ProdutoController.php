@@ -119,8 +119,18 @@ class ProdutoController extends Controller
                 $listaPedido = Pedido::where("usuario_id", $idusuario)
                                     ->orderby("dt_pedido", "desc")
                                     ->get();      
-$data["lista"] = $listaPedido;
+                $data["lista"] = $listaPedido;
 
             return view("compra/historico",$data);
+        }
+
+        public function dashboard (request $request){
+            $data = [];
+                $listaPedido = Pedido::orderby("status")
+                                    ->get();                        
+
+                $data["lista"] = $listaPedido;
+
+            return view("dashboard",$data);
         }
 }

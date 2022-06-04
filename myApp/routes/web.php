@@ -47,3 +47,6 @@ Route::post('/carrinho/finalizar', [ProdutoController::class,'finalizar'])
        
  Route::match(['get','post'],'/compras/historico', [ProdutoController::class,'historico'])
         ->name('compra_historico'); 
+
+        Route::match(['get','post'],'/dashboard', [ProdutoController::class,'dashboard'])
+        ->name('dashboard'); 
