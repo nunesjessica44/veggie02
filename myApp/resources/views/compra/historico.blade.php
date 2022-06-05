@@ -1,8 +1,8 @@
 @extends("layout")
 @section("scriptjs")
 <script>
-    $<(function(){
-        $(".infocompra").on('click', function()=>{
+    $(function(){
+        $(".infocompra").on('click', function(){
             //ao clicar no info compra essa funcao sera executada
             let id = $(this).attr("data-value")
             $.post('{{route("compra_detalhes")}}', { idpedido : id}, (result)=>{
@@ -36,14 +36,16 @@
         <td>{{ $pedData->format('d/m/Y H:i:s') }}</td>
         <td>{{ $ped->statusDesc() }}</td>
         <td>
-            <a href="#" class="btn btn-sm btn-info infocompra" data-value="{{$ped->id}}"data-toggle="modal" data-target="#modalcompra">
-            <i class="fas fa-shopping-basket"></i>
+            <a href="#" class="btn btn-sm btn-info infocompra" data-value="{{$ped->id}}" data-toggle="modal" data-target="#modalcompra">
+                <i class="fas fa-shopping-basket"></i>
+            </a>
         </td>
     </tr>
 @endforeach
     </table>
 </div>
-<div class="modal-fade" id="modalcompra">
+
+<div class="modal fade" id="modalcompra">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">

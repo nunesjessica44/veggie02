@@ -126,13 +126,12 @@ $data["lista"] = $listaPedido;
         }
         public function detalhes(Request $request){
             $idpedido = $request->input("idpedido");
-            
-            $listaItens = itensPedido::join("produtos", "produto.id", "=", "itens_pedidos.produto_id")
+            $listaItens = ItensPedido::join("produtos", "produtos.id", "=", "itens_pedidos.produto_id")
                     ->where("pedido_id", $idpedido)
-                    ->get(['itens_pedidos.*', 'itens_prdidos.valor as valoritem', 'produtos.*']);
+                    ->get(['itens_pedidos.*', 'itens_pedidos.valor as valoritem', 'produtos.*']);
 
             $data = [];
             $data["listaItens"] = $listaItens;
-            return view("compras/detalhes", $data);
+            return view("compra/detalhes", $data);
         }
 }
