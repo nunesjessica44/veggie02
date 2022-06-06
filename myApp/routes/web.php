@@ -50,3 +50,6 @@ Route::post('/carrinho/finalizar', [ProdutoController::class,'finalizar'])
 
 Route::post('/compras/detalhes', [ProdutoController::class,'detalhes'])
          ->name('compra_detalhes'); 
+
+Route::match(['get','post'],'/compras/pagar', [ProdutoController::class,'pagar'])
+         ->name('pagar'); 
