@@ -8,9 +8,29 @@ use App\Models\Produto;
 use App\Services\VendaService;
 use App\Models\Pedido;
 use App\Models\ItensPedido;
+use Illuminate\Support\env;
+use PagSeguro\Configuration\Configure;
 
 class ProdutoController extends Controller
 {
+    private $_configs;
+
+    public function __construct()
+    {
+        $this->_configs = new Configure();
+        $this->_configs->setCharset("UTF-8");
+        $this->_configs->setAccountCredentials(env('PAGSEGURO_EMAIL'), env('PAGSEGURO_TOKEN'));
+        $this->_configs->setEnvironment(env("PAGSEGURO_AMBIENTE"));
+        $this->_configs->setLog(true, storage_path('logs/pagseguro_' .date('Ymd') . '.log'));
+    }
+
+    public function getCredential(){
+        return $this->_configs->getAccountCredentials();
+    }
+
+
+
+
     Public function index(Request $request){
         $data = [];
 
@@ -137,6 +157,12 @@ $data["lista"] = $listaPedido;
 
         public function pagar(Request $request){
             $data = [];
+              $sessionCode = \PagSeguro\Services\Session::create(
+                $this->getCredential()
+              );
+              $IDSession = $sessionCode->getResult();
+              $data["sessionID"] = $IDSession;
+
             return view("compra/pagar", $data);
         }
 }
