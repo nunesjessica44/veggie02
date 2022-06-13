@@ -1,10 +1,40 @@
-@extends("layout");
-@section("scriptjs");
+@extends("layout")
+@section("scriptjs")
+
+<script type="text/javascript" src=
+"https://stc.sandbox.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.directpayment.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+<script>
+    function carregar(){
+        PagSeguroDirectPayment.setSessionId('{{$sessionID}}')
+    }
+
+    $(function(){
+        carregar();
+
+        $(".ncredito").on('blur', function(){
+            PagSeguroDirectPayment.onSenderHashReady(function(response){
+                if(response.status == 'error'){
+                    console.log(response.message)
+                    return false
+                }
+
+                var hash = response.senderHash
+                $(".hashseller").val(hash)
+            })
+        })
+    })
+
+</script>
+
 @endsection
 
 @section('conteudo')
     
     <form>
+        <input type="text" name="hashseller" class="hashseller">
         <div class="row">
             <div class="col-4">
                 Cartão de Crédito:
