@@ -157,6 +157,9 @@ $data["lista"] = $listaPedido;
 
         public function pagar(Request $request){
             $data = [];
+
+              $carrinho = session('cart', []);
+              $data ['cart'] = $carrinho;
               $sessionCode = \PagSeguro\Services\Session::create(
                 $this->getCredential()
               );

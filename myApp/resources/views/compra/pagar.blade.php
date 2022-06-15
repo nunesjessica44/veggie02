@@ -22,6 +22,31 @@
 
            })
        })
+
+       $(".nparcela").on('blur', function(){
+            var bandeira = 'visa';
+            var totalParcelas = $(this).val();
+
+            PagSeguroDirectPayment.getInstallments({
+                amount : $(".totalfinal").val(),
+                maxInstallmentNoInterest : 2,
+                brand : bandeira, 
+                sucess: function(response){
+                    console.log(response);
+                    let status = response.error
+                    if(status){
+                        alert("Não foi encontrado opção de parcelamento")
+                        return ;
+                    }
+                    let indice = totalParcelas - 1;
+                    let totalapagar = response.installments[bandeira][indice].totalAmount
+                    let valorTotalParcela = response.installments[bandeira][indice].installmentAmount
+
+                    $(".totalparcela").val(valorTotalParcela)
+                    $(".totalapagar").val(totalapagar)
+                }
+            })
+       })
    })
 
 </script>
@@ -30,6 +55,28 @@
 @section('conteudo')
     
     <form>
+    @php $total = 0; @endphp
+    @if(isset($cart) && count($cart) > 0)
+  <table class="table">
+      <thead>
+          <tr>
+              <th>Nome</th>
+              <th>Valor</th>
+          </tr>
+      </thead>
+      <tbody>
+      @foreach($cart as $indice => $p)    
+        <tr>
+            <td>{{ $p->nome }}</td>
+            <td>{{ $p->valor }}</td>
+        </tr>
+        @php
+            $total += $p->valor; 
+        @endphp
+      @endforeach
+      </tbody>
+  </table>
+@endif
         <input type="text" name="hashseller" class="hashseller">
         <div class="row">
             <div class="col-4">
@@ -58,11 +105,15 @@
             </div>
             <div class="col-4">
                 Valor Total:
-                <input type="text" name="totalfinal" class="totalfinal form-control" />
+                <input type="text" name="totalfinal" value="{{ $total }}" class="totalfinal form-control" readonly />
             </div>
             <div class="col-4">
                 Valor da Parcela:
                 <input type="text" name="totalparcela" class="totalparcela form-control" />
+            </div>
+            <div class="col-4">
+                Total à pagar:
+                <input type="text" name="totalapagar" class="totalapagar form-control" />
             </div>
             @csrf
             
