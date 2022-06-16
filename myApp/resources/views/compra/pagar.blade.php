@@ -67,6 +67,34 @@
                 }
             })
        })
+
+       $(".pagar").on("click", function(){
+         var numerocartao = $(".ncredito").val()
+         var iniciocartao = numerocartao.substr(0, 6)
+         var ncvv = $(".ncvv").val()
+         var anoexp = $(".anoexp").val()
+         var mesexp = $(".mesexp").val()
+         var hashseller = $(".hashseller").val()
+         var bandeira = $(".bandeira").val()
+
+         PagSeguroDirectPayment.createCardToken({
+            cardNumber : numerocartao,
+            brand : bandeira,
+            cvv : ncvv,
+            expirationMonth : mesexp,
+            expirationYear : anoexp,
+            success : function(response){
+                alert("Token da transação recuperada com sucesso")
+                console.log(response)
+            },
+            error : function(err){
+                alert("Sem token do cartao, verifique todos os campos")
+                console.log(err)
+            }
+
+         })
+
+       })
    })
 
 </script>
