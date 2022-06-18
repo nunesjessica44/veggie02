@@ -36,7 +36,7 @@ class VendaService {
 
             \DB::commit(); //confirma a transação
 
-            return ['status' => 'ok', 'message' =>'Venda finalizada com sucesso'];
+            return ['status' => 'ok', 'message' =>'Venda finalizada com sucesso', 'idpedido' => $pedido->id];
 
         }catch(\Exeption $e){
             \DB::rollback(); //retira alterações por ocorrer erro durante o processo

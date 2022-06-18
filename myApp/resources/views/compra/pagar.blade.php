@@ -84,6 +84,16 @@
             expirationMonth : mesexp,
             expirationYear : anoexp,
             success : function(response){
+                $post('{{ route("carrinho_finalizar") }}', {
+                    hashseller : hashseller,
+                    cardtoken : response.card.token,
+                    nparcela : $(".nparcela").val(),
+                    totalapagar : $(".totalapagar").val(),
+                    totalparcela : $(".totalparcela").val()
+                }), function(result){
+                    alert(result)
+                } 
+
                 alert("Token da transação recuperada com sucesso")
                 console.log(response)
             },
