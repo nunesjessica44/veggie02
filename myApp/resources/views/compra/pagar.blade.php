@@ -39,34 +39,38 @@
 
        })
 
-       $(".nparcela").on('blur', function(){
-            var bandeira = $(".bandeira").val();
-            var totalParcelas = $(this).val();
-            if(bandeira == ""){
-                alert("Preencha o número do cartão válido")
-                return ;
-            }
+       $(".nparcela").on('blur', function() {
+                var bandeira = $(".bandeira").val();
+                var totalParcelas = $(this).val();
 
-            PagSeguroDirectPayment.getInstallments({
-                amount : $(".totalfinal").val(),
-                maxInstallmentNoInterest : 2,
-                brand : bandeira, 
-                sucess: function(response){
-                    console.log(response);
-                    let status = response.error
-                    if(status){
-                        alert("Não foi encontrado opção de parcelamento")
-                        return ;
-                    }
-                    let indice = totalParcelas - 1;
-                    let totalapagar = response.installments[bandeira][indice].totalAmount
-                    let valorTotalParcela = response.installments[bandeira][indice].installmentAmount
-
-                    $(".totalparcela").val(valorTotalParcela)
-                    $(".totalapagar").val(totalapagar)
+                if (bandeira == "") {
+                    alert("Preencha o número do cartão válido")
+                    return;
                 }
+
+                PagSeguroDirectPayment.getInstallments({
+                    amount: $(".totalfinal").val(),
+                    maxInstallmentNoInterest: 2,
+                    brand: bandeira,
+                    success: function(response) {
+
+                        console.log(response)
+                        let indice = totalParcelas - 1;
+
+                        let totalapagar = response.installments.visa[indice].totalAmount
+                        let valorTotalParcela = response.installments.visa[indice].installmentAmount;
+
+                        console.log('jessica 3 ' + valorTotalParcela);
+                        $(".totalparcela").val(valorTotalParcela)
+                        $(".totalapagar").val(totalapagar)
+                        
+                    },
+                    error: function(err) {
+                        alert("Não foi encontrado opção de parcelamento")
+                        console.log(err)
+                    }
+                })
             })
-       })
 
        $(".pagar").on("click", function(){
          var numerocartao = $(".ncredito").val()
