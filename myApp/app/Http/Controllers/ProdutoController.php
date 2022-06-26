@@ -125,7 +125,7 @@ class ProdutoController extends Controller
             $result = $vendaService->finalizarVenda($prods, \Auth::user());
 
             if($result["status"] == "ok"){
-                //$request->session()->forget("cart");
+                $request->session()->forget("cart");
                 $credCard = new \PagSeguro\Domains\Requests\DirectPayment\CreditCard();
                 //PED-10 | PED_90
                 $credCard->setReference("PED_" . $result["idpedido"]);
@@ -141,7 +141,7 @@ class ProdutoController extends Controller
                 }
                 $user = \Auth::user();
 
-                $credCard->setSender()->setName($user->nome . "" . $user->nome);
+                $credCard->setSender()->setName($user->nome . " " . $user->nome);
                 //$credCard->setSender()->setEmail($user->email);
                 $credCard->setSender()->setEmail($user->login. "@sandbox.pagseguro.com.br");
                 $credCard->setSender()->setHash($request->input("hashseller"));
@@ -174,11 +174,12 @@ class ProdutoController extends Controller
                 $parcela = $request->input("nparcela");
                 $totalapagar = $request->input("totalapagar");
                 $totalparcela = $request->input("totalparcela");
+                
 
-                $credCard->setInstallment()->withParameters($parcela, number_format($totalparcela, 2,".",""));
+                $credCard->setInstallment()->withParameters($parcela, number_format($totalparcela, 2,".",""), noInterestInstallmentQuantity:2);
 
                 //Dados do titular do cartao
-                $credCard->setHolder()->setName($user->nome . "" . $user->nome);
+                $credCard->setHolder()->setName($user->nome . " " . $user->nome);
                 $credCard->setHolder()->setDocument()->withParameters("CPF", $user->login);
                 $credCard->setHolder()->setBirthDate("01/01/1980");
                 $credCard->setHolder()->setPhone()->withParameters(11, 987562233);

@@ -60,7 +60,6 @@
                         let totalapagar = response.installments.visa[indice].totalAmount
                         let valorTotalParcela = response.installments.visa[indice].installmentAmount;
 
-                        console.log('jessica 3 ' + valorTotalParcela);
                         $(".totalparcela").val(valorTotalParcela)
                         $(".totalapagar").val(totalapagar)
                         
@@ -81,6 +80,8 @@
          var hashseller = $(".hashseller").val()
          var bandeira = $(".bandeira").val()
 
+         
+
          PagSeguroDirectPayment.createCardToken({
             cardNumber : numerocartao,
             brand : bandeira,
@@ -88,15 +89,19 @@
             expirationMonth : mesexp,
             expirationYear : anoexp,
             success : function(response){
-                $post('{{ route("carrinho_finalizar") }}', {
+                
+                
+                $.post('{{ route("carrinho_finalizar") }}', {
                     hashseller : hashseller,
                     cardtoken : response.card.token,
                     nparcela : $(".nparcela").val(),
                     totalapagar : $(".totalapagar").val(),
-                    totalparcela : $(".totalparcela").val()
-                }), function(result){
+                    totalparcela : $(".totalparcela").val(),
+                    "_token": "{{ csrf_token() }}"
+                    
+                }, function(result){
                     alert(result)
-                } 
+                });
 
                 alert("Token da transação recuperada com sucesso")
                 console.log(response)
@@ -117,6 +122,7 @@
 @section('conteudo')
     
     <form>
+        @csrf
     @php $total = 0; @endphp
     @if(isset($cart) && count($cart) > 0)
   <table class="table">
@@ -179,7 +185,7 @@
                 Total à pagar:
                 <input type="text" name="totalapagar" class="totalapagar form-control" />
             </div>
-            @csrf
+           
             
         </div>
         <input type="button" value="Pagar" class="btn btn-lg mt-3 btn-success pagar">
