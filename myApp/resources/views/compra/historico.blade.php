@@ -19,7 +19,7 @@
     <h2>Minhas Compras</h2>
 </div>
 
-<div class ="col-12">
+<div class ="col-12" style="margin-bottom: 30%">
     <table class="table table-bordered">
         <tr>
             <th>Data da compra</th>
@@ -45,7 +45,7 @@
     </table>
 </div>
 
-<div class="modal fade" id="modalcompra">
+<div class="modal fade" id="modalcompra" >
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">

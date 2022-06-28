@@ -1,4 +1,4 @@
-me@extends('layout')
+@extends('layout')
 @section('conteudo')
     <div class="col-2">
     @if(isset($listaCategoria) && count($listaCategoria) > 0)

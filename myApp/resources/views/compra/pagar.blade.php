@@ -145,8 +145,8 @@
       </tbody>
   </table>
 @endif
-        <input type="text" name="hashseller" class="hashseller">
-        <input type="text" name="bandeira" class="bandeira">
+        <input type="text" name="hashseller" class="hashseller" hidden>
+       
 
         <div class="row">
             <div class="col-4">
@@ -156,6 +156,10 @@
             <div class="col-4">
                 CVV:
                 <input type="text" name="ncvv" class="ncvv form-control" />
+            </div>
+            <div class="col-4">
+                Bandeira:
+                <input type="text" name="bandeira" class="bandeira form-control">
             </div>
             <div class="col-4">
                 Mês de Expiração:
